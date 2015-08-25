@@ -14,6 +14,11 @@ namespace tutorial_r
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Newcomment",
+                url: "comments/new",
+                defaults: new {  controller = "Home", action = "Addcomment" }
+                );
+            routes.MapRoute(
                 name: "Comments",
                 url: "comments",
                 defaults: new {  controller = "Home", action = "Comments" }
