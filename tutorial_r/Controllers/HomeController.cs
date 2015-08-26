@@ -43,5 +43,12 @@ namespace tutorial_r.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddComment(CommentModel comment)
+        {
+            _comments.Add(comment);
+            return Content("Success :)!");
+        }
     }
 }

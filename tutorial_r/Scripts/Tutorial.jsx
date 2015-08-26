@@ -29,11 +29,26 @@ var CommentList = React.createClass({
 });
 
 var CommentForm = React.createClass({
+  
+  handleSubmit: function(e) {
+    e.preventDefault();
+	var author = this.refs.author.getDOMNode().value.trim();
+	var text = this.refs.text.getDOMNode().value.trim();
+	if (!text || !author) {
+	  return;
+	}
+	this.refs.author.getDOMNode().value = '';
+	this.refs.text.getDOMNode().value = '';
+	return;
+  },
+
   render: function() {
     return (
-      <div className="commentForm">
-        Hello, world! I am a CommentForm.
-      </div>
+      <form className="commentForm">
+        <input type="text" placeholder="Your name" />
+		<input type="text" placeholder="Put your comment here..." />
+		<input type="submit" value="Post" />
+      </form>
     );
   }
 });
@@ -48,6 +63,9 @@ var CommentBox = React.createClass({
     }.bind(this);
     xhr.send();
   },
+  handleCommentSubmit: function(comment) {
+    //TODO: submit to server and refresh the list
+  },
   getInitialState: function() {
     return {data: []};
   },
@@ -60,7 +78,7 @@ var CommentBox = React.createClass({
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentList data={this.state.data} />
-        <CommentForm />
+        <CommentForm on CommentSubmit={this.handleCommentsubmit} />
       </div>
     );
   }
