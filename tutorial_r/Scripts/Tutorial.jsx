@@ -45,7 +45,7 @@ var CommentForm = React.createClass({
   render: function() {
     return (
       <form className="commentForm">
-        <input type="text" placeholder="Yuor name" />
+        <input type="text" placeholder="Your name" />
 		<input type="text" placeholder="Put your comment here..." />
 		<input type="submit" value="Post" />
       </form>
