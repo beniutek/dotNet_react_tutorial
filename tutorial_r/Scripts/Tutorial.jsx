@@ -14,14 +14,20 @@
 var CommentList = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function (comment) {
-	  return (
-	    <Comment author={comment.Author}>
-		  {comment.Text}
-		</Comment>
+        return (
+          <div className="list-group-item">
+            <div className="list-group-item-heading">
+	            <Comment author={comment.Author}>
+                    <div className="list-group-item-text">
+		              {comment.Text}
+                    </div>
+		        </Comment>
+            </div>
+          </div>
 	  );
 	});
     return (
-      <div className="commentList">
+      <div className="list-group">
 	    {commentNodes}
       </div>
     );
@@ -43,12 +49,14 @@ var CommentForm = React.createClass({
   },
 
   render: function() {
-    return (
-      <form className="commentForm">
-        <input type="text" placeholder="Your name" />
-		<input type="text" placeholder="Put your comment here..." />
-		<input type="submit" value="Post" />
-      </form>
+      return (
+        <div className="input-group">
+          <form className="commentForm">
+            <input type="text" className="form-control" placeholder="Your name" />
+		    <input type="text" className="form-control" placeholder="Put your comment here..." />
+            <button className="btn btn-primary" type="submit" value="Post">Add comment</button>
+          </form>
+        </div>
     );
   }
 });
